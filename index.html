@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keshav Sharma | Portfolio</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' }
+  </script>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    /* ===== SPA SECTION SYSTEM (FINAL) ===== */
+
+    .section {
+      display: none;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .section.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+
+    /* Card hover */
+    .card {
+      transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 80px rgba(59, 130, 246, 0.25);
+    }
+
+    /* Glow */
+    .glow::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 2rem;
+      background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%),
+          rgba(59, 130, 246, 0.28),
+          transparent 45%);
+      opacity: 0;
+      transition: opacity .6s ease;
+      pointer-events: none;
+    }
+
+    .card:hover .glow::before {
+      opacity: 1;
+    }
+
+    /* Profile image movement */
+    #profileWrap {
+      transition: transform .2s ease;
+    }
+
+
+    .nav-btn {
+      color: rgba(0, 0, 0, 0.45);
+      transition: all 0.3s ease;
+    }
+
+    .dark .nav-btn {
+      color: rgba(255, 255, 255, 0.65);
+      /* ✅ DARK MODE icon color */
+    }
+
+    .nav-btn.active {
+      color: #3b82f6;
+      /* blue-500 */
+      transform: translateY(-3px);
+      text-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+    }
+  </style>
+
+  </style>
+</head>
+
+
+
+
+
+<!-- THEME TOGGLE (TOP RIGHT – FIXED) -->
+<button id="themeToggle" class="fixed top-6 right-6 z-[9999]
+         bg-white/20 dark:bg-black/40
+         backdrop-blur-xl
+         border border-white/30
+         rounded-xl px-3 py-2
+         text-xl text-black dark:text-white
+         hover:text-blue-400 transition">
+  <i id="themeIcon" class="fa-solid fa-sun"></i>
+</button>
+
+<body class="
+  min-h-screen
+  overflow-x-hidden
+  bg-gradient-to-b
+  from-slate-50 via-white to-slate-100
+  dark:from-[#020617] dark:via-[#020617] dark:to-[#0B1220]
+  text-slate-800 dark:text-slate-200
+">
+
+  <main class="max-w-6xl mx-auto px-6 pt-28 pb-28 min-h-screen relative">
+
+    <!-- HOME -->
+    <section id="home" class="section active text-center min-h-[70vh] pt-10">
+
+      <div class="flex justify-center mb-10 mt-10">
+        <div id="profileWrap" class="relative">
+          <div class="absolute inset-0 rounded-full bg-blue-500 blur-2xl opacity-40"></div>
+
+          <img src="./photo.jpg" alt="Profile Photo"
+            class="relative w-56 h-56 rounded-full border-4 border-blue-500 object-cover">
+        </div>
+      </div>
+      <h1 class="text-5xl font-bold text-black dark:text-white">
+        Hi, I’m <span class="text-blue-500">Keshav Sharma</span>
+      </h1>
+
+      <p class="mt-4 text-gray-400">AI & ML Engineer</p>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section text-center">
+      <h2 class="text-3xl font-bold text-blue-400">About Me</h2>
+      <div class="relative max-w-4xl mx-auto mt-10">
+
+        <div class="
+    bg-white/60 dark:bg-black/40
+    backdrop-blur-xl
+    border border-white/30 dark:border-white/20
+    rounded-3xl
+    p-8
+    shadow-[0_0_40px_rgba(59,130,246,0.25)]
+    transition-all duration-500
+    hover:-translate-y-1
+  ">
+
+          <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed text-center">
+            I am a BCA student specializing in Artificial Intelligence and Machine Learning,
+            with a strong interest in building intelligent systems and modern web applications.
+            I enjoy working on real-world projects, exploring data-driven solutions, and
+            continuously improving my skills in AI and ML.
+            I am passionate about learning, problem-solving, and growing as a technology professional.
+          </p>
+
+          <!-- CV BUTTONS -->
+          <div class="mt-8 flex justify-center gap-6">
+
+            <!-- View CV -->
+            <a href="./cv.pdf" target="_blank" class="
+       px-6 py-3 rounded-full
+       bg-white/40 dark:bg-white/10
+       backdrop-blur-md
+       border border-white/30
+
+       text-slate-800 dark:text-white
+       font-medium
+
+       transform -translate-y-1
+       shadow-[0_8px_30px_rgba(59,130,246,0.35)]
+
+       transition-all duration-300 ease-out
+       hover:-translate-y-3
+       hover:shadow-[0_15px_45px_rgba(59,130,246,0.7)]
+     ">
+              <i class="fa-regular fa-eye"></i>
+              View CV
+            </a>
+
+            <!-- Download CV -->
+            <a href="./cv.pdf" download class="
+       px-6 py-3 rounded-full
+       bg-blue-500/90
+       text-white
+       font-medium
+
+       transform -translate-y-1
+       shadow-[0_8px_35px_rgba(59,130,246,0.45)]
+
+       transition-all duration-300 ease-out
+       hover:-translate-y-3
+       hover:shadow-[0_18px_55px_rgba(59,130,246,0.85)]
+     ">
+              <i class="fa-solid fa-download"></i>
+              Download CV
+            </a>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section">
+      <div class="text-center mb-14">
+        <p class="uppercase tracking-widest text-sm text-slate-400">
+          What Education I Have
+        </p>
+        <h2 class="text-4xl font-bold mt-2 text-blue-500">
+          My Educations
+        </h2>
+      </div>
+
+      <!-- ✅ MISSING WRAPPER (THIS FIXES EVERYTHING) -->
+      <div class="relative flex flex-col gap-12 max-w-3xl mx-auto">
+
+        <!-- CARD 1 -->
+        <div class="relative card
+  bg-white/60 dark:bg-black/40
+  backdrop-blur-xl
+
+  border border-white/40 dark:border-white/20
+  rounded-3xl p-6
+
+  shadow-[0_10px_40px_rgba(59,130,246,0.25)]
+  hover:shadow-[0_25px_80px_rgba(59,130,246,0.6)]
+
+  dark:shadow-[0_10px_40px_rgba(0,0,0,0.6)]
+  dark:hover:shadow-[0_25px_80px_rgba(255,255,255,0.25)]
+
+  transition-all duration-500 ease-out
+  hover:-translate-y-2
+">
+
+          <h3 class="text-xl font-semibold text-blue-600 dark:text-blue-300">
+            <i class="fa-solid fa-award"></i>
+            Sanskriti University, Mathura
+          </h3>
+
+          <p class="mt-1 text-slate-700 dark:text-slate-300">
+            BCA – AI & ML
+          </p>
+
+          <span class="inline-block mt-3 px-4 py-1 rounded-full
+    bg-white/50 dark:bg-black/40
+    text-slate-700 dark:text-slate-200 text-sm">
+            2024 – Present
+          </span>
+
+        </div>
+        <div class="relative card
+  bg-white/60 dark:bg-black/40
+  backdrop-blur-xl
+
+  border border-white/40 dark:border-white/20
+  rounded-3xl p-6
+
+  shadow-[0_10px_40px_rgba(59,130,246,0.25)]
+  hover:shadow-[0_25px_80px_rgba(59,130,246,0.6)]
+
+  dark:shadow-[0_10px_40px_rgba(0,0,0,0.6)]
+  dark:hover:shadow-[0_25px_80px_rgba(255,255,255,0.25)]
+
+  transition-all duration-500 ease-out
+  hover:-translate-y-2
+">
+
+          <h3 class="text-xl font-semibold text-blue-600 dark:text-blue-300">
+            <i class="fa-solid fa-award"></i>
+            Nootan Adarsh Vidhya Mandir
+          </h3>
+
+          <p class="mt-1 text-slate-700 dark:text-slate-300">
+            Arts – 83.54%
+          </p>
+
+          <span class="inline-block mt-3 px-4 py-1 rounded-full
+    bg-white/50 dark:bg-black/40
+    text-slate-700 dark:text-slate-200 text-sm">
+            2023 – 2024
+          </span>
+
+        </div>
+        <div class="relative card
+  bg-white/60 dark:bg-black/40
+  backdrop-blur-xl
+
+  border border-white/40 dark:border-white/20
+  rounded-3xl p-6
+
+  shadow-[0_10px_40px_rgba(59,130,246,0.25)]
+  hover:shadow-[0_25px_80px_rgba(59,130,246,0.6)]
+
+  dark:shadow-[0_10px_40px_rgba(0,0,0,0.6)]
+  dark:hover:shadow-[0_25px_80px_rgba(255,255,255,0.25)]
+
+  transition-all duration-500 ease-out
+  hover:-translate-y-2
+">
+
+          <h3 class="text-xl font-semibold text-blue-600 dark:text-blue-300">
+            <i class="fa-solid fa-award"></i>
+            Adarsh Gyan Ganga School
+          </h3>
+
+          <p class="mt-1 text-slate-700 dark:text-slate-300">
+            PCMB – 54%
+          </p>
+
+          <span class="inline-block mt-3 px-4 py-1 rounded-full
+    bg-white/50 dark:bg-black/40
+    text-slate-700 dark:text-slate-200 text-sm">
+            2021 – 2022
+          </span>
+
+        </div>
+
+
+
+      </div>
+    </section>
+
+
+
+    <!-- SKILLS -->
+
+    <section id="skills" class="section">
+      <div class="text-center mb-14">
+        <p class="uppercase tracking-widest text-sm text-slate-400">
+          What Skills I Have
+        </p>
+        <h2 class="text-4xl font-bold text-blue-500 mt-2">
+          My Skills
+        </h2>
+      </div>
+
+      <!-- SKILLS GRID -->
+      <div class="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+
+        <!-- Programming -->
+        <div class="relative card
+      bg-white/60 dark:bg-black/40
+      backdrop-blur-xl
+      border border-white/30 dark:border-white/20
+      rounded-3xl p-6
+
+      shadow-[0_0_40px_rgba(59,130,246,0.25)]
+      hover:shadow-[0_0_80px_rgba(59,130,246,0.55)]
+
+      transition-all duration-500 ease-out
+      hover:-translate-y-2
+    ">
+          <h3 class="text-blue-500 dark:text-blue-300 text-xl mb-4 font-semibold">
+            <i class="fa-solid fa-file-code"></i>
+            Programming
+          </h3>
+
+          <div class="grid grid-cols-2 gap-3 text-slate-700 dark:text-slate-200">
+            <p><i class="fa-brands fa-python"></i> Python</p>
+            <p><i class="fa-brands fa-js"></i> JavaScript</p>
+            <p><i class="fa-brands fa-java"></i> Java</p>
+            <p><i class="fa-solid fa-c"></i> C</p>
+          </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="relative card
+      bg-white/60 dark:bg-black/40
+      backdrop-blur-xl
+      border border-white/30 dark:border-white/20
+      rounded-3xl p-6
+
+      shadow-[0_0_40px_rgba(59,130,246,0.25)]
+      hover:shadow-[0_0_80px_rgba(59,130,246,0.55)]
+
+      transition-all duration-500 ease-out
+      hover:-translate-y-2
+    ">
+          <h3 class="text-blue-500 dark:text-blue-300 text-xl mb-4 font-semibold">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+            Tools
+          </h3>
+
+          <div class="grid grid-cols-2 gap-3 text-slate-700 dark:text-slate-200">
+            <p><i class="fa-brands fa-github"></i> Git & GitHub</p>
+            <p>✔ Jupyter Notebook</p>
+            <p>✔ Anaconda</p>
+            <p>✔ VS Code</p>
+          </div>
+        </div>
+
+        <!-- Frontend -->
+        <div class="relative card
+      bg-white/60 dark:bg-black/40
+      backdrop-blur-xl
+      border border-white/30 dark:border-white/20
+      rounded-3xl p-6
+
+      shadow-[0_0_40px_rgba(59,130,246,0.25)]
+      hover:shadow-[0_0_80px_rgba(59,130,246,0.55)]
+
+      transition-all duration-500 ease-out
+      hover:-translate-y-2
+    ">
+          <h3 class="text-blue-500 dark:text-blue-300 text-xl mb-4 font-semibold">
+            <i class="fa-solid fa-italic"></i>
+            Frontend
+          </h3>
+
+          <div class="grid grid-cols-2 gap-3 text-slate-700 dark:text-slate-200">
+            <p><i class="fa-brands fa-html5"></i> HTML5</p>
+            <p><i class="fa-brands fa-css3-alt"></i> CSS3</p>
+            <p><i class="fa-brands fa-js"></i> JavaScript</p>
+          </div>
+        </div>
+
+        <!-- Libraries -->
+        <div class="relative card
+      bg-white/60 dark:bg-black/40
+      backdrop-blur-xl
+      border border-white/30 dark:border-white/20
+      rounded-3xl p-6
+
+      shadow-[0_0_40px_rgba(59,130,246,0.25)]
+      hover:shadow-[0_0_80px_rgba(59,130,246,0.55)]
+
+      transition-all duration-500 ease-out
+      hover:-translate-y-2
+    ">
+          <h3 class="text-blue-500 dark:text-blue-300 text-xl mb-4 font-semibold">
+            <i class="fa-solid fa-rocket"></i>
+            Libraries & Frameworks
+          </h3>
+
+          <div class="grid grid-cols-2 gap-3 text-slate-700 dark:text-slate-200">
+            <p>✔ NumPy</p>
+            <p>✔ Pandas</p>
+            <p>✔ Scikit-learn</p>
+            <p>✔ TensorFlow</p>
+            <p>✔ PyTorch</p>
+            <p>✔ Matplotlib</p>
+            <p>✔ Seaborn</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="text-center mb-14">
+        <p class="uppercase tracking-widest text-sm text-slate-400">
+          What Projects I Built
+        </p>
+        <h2 class="text-4xl font-bold text-blue-500 mt-2">
+          My Projects
+        </h2>
+      </div>
+
+      <div class="space-y-10 max-w-3xl mx-auto">
+
+        <!-- Project 1 -->
+        <div class="relative card
+  bg-white/60 dark:bg-black/40
+  backdrop-blur-xl
+  border border-white/30 dark:border-white/20
+  rounded-3xl p-6
+
+  shadow-[0_0_40px_rgba(59,130,246,0.25)]
+  hover:shadow-[0_0_90px_rgba(59,130,246,0.65)]
+
+  dark:shadow-[0_0_35px_rgba(255,255,255,0.15)]
+  dark:hover:shadow-[0_0_70px_rgba(255,255,255,0.45)]
+
+  transition-all duration-500 ease-out
+  hover:-translate-y-2
+">
+
+          <h3 class="text-blue-500 dark:text-blue-300 text-xl font-semibold">
+            <i class="fa-brands fa-battle-net"></i>
+            Resume IQ – Rank Your Resume
+          </h3>
+
+          <p class="text-slate-700 dark:text-slate-300 mt-3 leading-relaxed">
+            Resume IQ is an ATS-inspired resume ranking system built using Python and Streamlit.
+            It analyzes resumes (PDF/TXT) to extract skills, experience, education, and certifications
+            using rule-based NLP techniques and ranks candidates against job requirements.
+          </p>
+
+          <div class="mt-5 flex gap-4 flex-wrap">
+
+            <!-- Live Demo -->
+            <a href="https://resumeiqfilter.streamlit.app/" target="_blank" class="
+        px-5 py-2 rounded-full
+        bg-white/50 dark:bg-white/10
+        backdrop-blur-md
+        border border-white/30
+
+        text-slate-800 dark:text-blue-100 font-medium
+
+        shadow-[0_8px_30px_rgba(59,130,246,0.35)]
+        hover:shadow-[0_15px_50px_rgba(59,130,246,0.75)]
+
+        transition-all duration-300
+        hover:-translate-y-1
+      ">
+              Live Demo
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com/keshavsharma5634/ResumeIQ-Ats-Resume-Analyzer" target="_blank" class="
+        px-5 py-2 rounded-full
+        bg-blue-500/90
+        text-white font-medium
+
+        shadow-[0_8px_35px_rgba(59,130,246,0.45)]
+        hover:shadow-[0_18px_60px_rgba(59,130,246,0.85)]
+
+        transition-all duration-300
+        hover:-translate-y-1
+      ">
+              GitHub
+            </a>
+
+          </div>
+        </div>
+        <!-- Project 2 -->
+        <div class="relative card
+  bg-white/60 dark:bg-black/40
+  backdrop-blur-xl
+  border border-white/30 dark:border-white/20
+  rounded-3xl p-6
+
+  shadow-[0_0_40px_rgba(59,130,246,0.25)]
+  hover:shadow-[0_0_90px_rgba(59,130,246,0.65)]
+
+  dark:shadow-[0_0_35px_rgba(255,255,255,0.15)]
+  dark:hover:shadow-[0_0_70px_rgba(255,255,255,0.45)]
+
+  transition-all duration-500 ease-out
+  hover:-translate-y-2
+">
+
+          <h3 class="text-blue-500 dark:text-blue-300 text-xl font-semibold">
+            <i class="fa-brands fa-battle-net"></i>
+            AI-Powered Cybersecurity Threat Detection System
+          </h3>
+
+          <p class="text-slate-700 dark:text-slate-300 mt-3 leading-relaxed">
+            Built an end-to-end machine learning system to detect malicious network traffic
+            using the CICIDS2017 dataset. Implemented preprocessing, feature scaling, and
+            trained a Random Forest model. Deployed as a Streamlit app for real-time prediction.
+          </p>
+
+          <div class="mt-5 flex gap-4 flex-wrap">
+
+            <a href="https://threaddetaction.streamlit.app/" target="_blank" class="
+        px-5 py-2 rounded-full
+        bg-white/50 dark:bg-white/10
+        backdrop-blur-md
+        border border-white/30
+
+        text-slate-800 dark:text-blue-100 font-medium
+
+        shadow-[0_8px_30px_rgba(59,130,246,0.35)]
+        hover:shadow-[0_15px_50px_rgba(59,130,246,0.75)]
+
+        transition-all duration-300
+        hover:-translate-y-1
+      ">
+              Live Demo
+            </a>
+
+            <a href="https://github.com/keshavsharma5634/AI-Cyber-Thread-Detaction-" target="_blank" class="
+        px-5 py-2 rounded-full
+        bg-blue-500/90
+        text-white font-medium
+
+        shadow-[0_8px_35px_rgba(59,130,246,0.45)]
+        hover:shadow-[0_18px_60px_rgba(59,130,246,0.85)]
+
+        transition-all duration-300
+        hover:-translate-y-1
+      ">
+              GitHub
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+
+      </div>
+
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <!-- CONTACT -->
+    <section id="contact" class="section pb-24">
+  <div class="text-center mb-14">
+    <h2 class="text-4xl font-bold text-blue-500">Let’s Connect</h2>
+  </div>
+
+  <div class="space-y-8 max-w-3xl mx-auto">
+
+    <!-- CARD -->
+    <a href="https://x.com/keshav64308" target="_blank"
+      class="relative card block text-center
+        bg-white/60 dark:bg-black/40
+        backdrop-blur-xl
+        border border-white/30 dark:border-white/20
+        rounded-3xl p-6
+
+        shadow-[0_0_40px_rgba(59,130,246,0.25)]
+        hover:shadow-[0_0_90px_rgba(59,130,246,0.65)]
+
+        dark:shadow-[0_0_30px_rgba(255,255,255,0.15)]
+        dark:hover:shadow-[0_0_70px_rgba(255,255,255,0.45)]
+
+        transition-all duration-500 ease-out
+        hover:-translate-y-2
+      ">
+      <i class="fa-brands fa-x-twitter text-4xl mb-3 text-blue-500 dark:text-blue-300"></i>
+      <p class="text-slate-700 dark:text-slate-200 font-medium">X</p>
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/keshav-sharma-69279a324" target="_blank"
+      class="relative card block text-center
+        bg-white/60 dark:bg-black/40
+        backdrop-blur-xl
+        border border-white/30 dark:border-white/20
+        rounded-3xl p-6
+
+        shadow-[0_0_40px_rgba(59,130,246,0.25)]
+        hover:shadow-[0_0_90px_rgba(59,130,246,0.65)]
+
+        dark:shadow-[0_0_30px_rgba(255,255,255,0.15)]
+        dark:hover:shadow-[0_0_70px_rgba(255,255,255,0.45)]
+
+        transition-all duration-500 ease-out
+        hover:-translate-y-2
+      ">
+      <i class="fa-brands fa-linkedin text-4xl mb-3 text-blue-500 dark:text-blue-300"></i>
+      <p class="text-slate-700 dark:text-slate-200 font-medium">LinkedIn</p>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/keshavsharma1804" target="_blank"
+      class="relative card block text-center
+        bg-white/60 dark:bg-black/40
+        backdrop-blur-xl
+        border border-white/30 dark:border-white/20
+        rounded-3xl p-6
+
+        shadow-[0_0_40px_rgba(59,130,246,0.25)]
+        hover:shadow-[0_0_90px_rgba(59,130,246,0.65)]
+
+        dark:shadow-[0_0_30px_rgba(255,255,255,0.15)]
+        dark:hover:shadow-[0_0_70px_rgba(255,255,255,0.45)]
+
+        transition-all duration-500 ease-out
+        hover:-translate-y-2
+      ">
+      <i class="fa-brands fa-instagram text-4xl mb-3 text-blue-500 dark:text-blue-300"></i>
+      <p class="text-slate-700 dark:text-slate-200 font-medium">Instagram</p>
+    </a>
+
+    <!-- GitHub -->
+    <a href="https://github.com/keshavsharma5634" target="_blank"
+      class="relative card block text-center
+        bg-white/60 dark:bg-black/40
+        backdrop-blur-xl
+        border border-white/30 dark:border-white/20
+        rounded-3xl p-6
+
+        shadow-[0_0_40px_rgba(59,130,246,0.25)]
+        hover:shadow-[0_0_90px_rgba(59,130,246,0.65)]
+
+        dark:shadow-[0_0_30px_rgba(255,255,255,0.15)]
+        dark:hover:shadow-[0_0_70px_rgba(255,255,255,0.45)]
+
+        transition-all duration-500 ease-out
+        hover:-translate-y-2
+      ">
+      <i class="fa-brands fa-github text-4xl mb-3 text-blue-500 dark:text-blue-300"></i>
+      <p class="text-slate-700 dark:text-slate-200 font-medium">GitHub</p>
+    </a>
+
+    <!-- Email -->
+    <a href="mailto:keshavsharma65631@gmail.com"
+      class="relative card block text-center
+        bg-white/60 dark:bg-black/40
+        backdrop-blur-xl
+        border border-white/30 dark:border-white/20
+        rounded-3xl p-6
+
+        shadow-[0_0_40px_rgba(59,130,246,0.25)]
+        hover:shadow-[0_0_90px_rgba(59,130,246,0.65)]
+
+        dark:shadow-[0_0_30px_rgba(255,255,255,0.15)]
+        dark:hover:shadow-[0_0_70px_rgba(255,255,255,0.45)]
+
+        transition-all duration-500 ease-out
+        hover:-translate-y-2
+      ">
+      <i class="fa-solid fa-envelope text-4xl mb-3 text-blue-500 dark:text-blue-300"></i>
+      <p class="text-slate-700 dark:text-slate-200 font-medium">Email Me</p>
+    </a>
+
+  </div>
+</section>
+
+
+    <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999]
+  bg-white/70 dark:bg-black/40
+  backdrop-blur-xl
+  border border-white/40 dark:border-white/20
+  rounded-[25px]
+  px-10 py-4
+  shadow-[0_10px_40px_rgba(0,0,0,0.12)]">
+
+
+      <div class="flex gap-8 text-xl">
+
+        <button class="nav-btn active" data-target="home" onclick="showSection('home')">
+          <i class="fa-solid fa-house"></i>
+          <span class="text-xs block">Home</span>
+        </button>
+
+        <button class="nav-btn" data-target="about" onclick="showSection('about')">
+          <i class="fa-solid fa-user"></i>
+          <span class="text-xs block">About</span>
+        </button>
+
+        <button class="nav-btn" data-target="education" onclick="showSection('education')">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span class="text-xs block">Edu</span>
+        </button>
+
+        <button class="nav-btn" data-target="skills" onclick="showSection('skills')">
+          <i class="fa-solid fa-star"></i>
+          <span class="text-xs block">Skills</span>
+        </button>
+
+        <button class="nav-btn" data-target="projects" onclick="showSection('projects')">
+          <i class="fa-solid fa-code"></i>
+          <span class="text-xs block">Projects</span>
+        </button>
+
+        <button class="nav-btn" data-target="contact" onclick="showSection('contact')">
+          <i class="fa-solid fa-envelope"></i>
+          <span class="text-xs block">Contact</span>
+        </button>
+
+      </div>
+    </nav>
+
+
+
+
+  </main>
+
+
+  <script>
+    function showSection(id) {
+
+      // sections toggle
+      document.querySelectorAll('.section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+
+      const activeSection = document.getElementById(id);
+      if (activeSection) activeSection.classList.add('active');
+
+      // navbar active toggle
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.target === id) {
+          btn.classList.add('active');
+        }
+      });
+
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+
+
+
+
+
+
+
+
+    const icon = document.getElementById("themeIcon");
+    const root = document.documentElement;
+
+    // ✅ DEFAULT = LIGHT MODE
+    if (localStorage.theme === "dark") {
+      root.classList.add("dark");
+      icon.classList.remove("fa-moon");
+      icon.classList.add("fa-sun");
+    } else {
+      root.classList.remove("dark");
+      icon.classList.remove("fa-sun");
+      icon.classList.add("fa-moon");
+    }
+
+    // Toggle
+    document.getElementById("themeToggle").onclick = () => {
+      root.classList.toggle("dark");
+
+      if (root.classList.contains("dark")) {
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+        localStorage.theme = "dark";
+      } else {
+        icon.classList.remove("fa-sun");
+        icon.classList.add("fa-moon");
+        localStorage.theme = "light";
+      }
+    };
+
+
+
+    /* Profile image mouse move */
+    const profile = document.getElementById("profileWrap");
+    document.addEventListener("mousemove", e => {
+      const x = (e.clientX / window.innerWidth - 1) * 20;
+      const y = (e.clientY / window.innerHeight - 1) * 20;
+      profile.style.transform = `translate(${x}px, ${y}px)`;
+    });
+  </script>
+
+</body>
+
+</html>
